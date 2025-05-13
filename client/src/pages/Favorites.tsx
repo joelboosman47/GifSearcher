@@ -136,7 +136,7 @@ const Favorites = () => {
         {isLoading && (
           <div className="text-center py-12">
             <Loader2 className="mx-auto h-10 w-10 animate-spin text-primary" />
-            <h2 className="text-xl font-medium text-gray-700 mt-4">Loading your favorites...</h2>
+            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mt-4">Loading your favorites...</h2>
           </div>
         )}
         

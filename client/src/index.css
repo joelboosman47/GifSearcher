@@ -61,4 +61,13 @@
     background-color: white !important;
     color: #333 !important; 
   }
+  
+  .dark .bg-white.shadow-md {
+    background-color: #1f2937 !important;
+  }
+  
+  .dark .bg-white.shadow-md input {
+    background-color: #1f2937 !important;
+    color: #f1f5f9 !important;
+  }
 }

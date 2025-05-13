@@ -55,7 +55,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
           onChange={handleSearchInput}
           onKeyDown={handleKeyDown}
           disabled={isLoading}
-          style={{ color: "#333" }}
+
         />
         {searchTerm && (
           <button
