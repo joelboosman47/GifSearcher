@@ -115,7 +115,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light">
+    <div className="min-h-screen bg-light dark:bg-gray-900">
       <div className="container mx-auto px-4 py-6">
         <Header />
         
@@ -151,10 +151,10 @@ const Favorites = () => {
         
         {/* Empty state */}
         {!isLoading && !isError && favorites.length === 0 && (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <Heart className="mx-auto h-14 w-14 mb-3 text-gray-300" />
-            <h2 className="text-xl font-medium text-gray-700 mb-2">No favorites yet</h2>
-            <p className="text-gray-500 mb-4">You haven't saved any GIFs to your favorites.</p>
+          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+            <Heart className="mx-auto h-14 w-14 mb-3 text-gray-300 dark:text-gray-600" />
+            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">No favorites yet</h2>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">You haven't saved any GIFs to your favorites.</p>
             <Link href="/">
               <Button className="bg-primary hover:bg-blue-600 text-white">
                 Search for GIFs

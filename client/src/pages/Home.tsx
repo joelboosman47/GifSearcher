@@ -38,7 +38,7 @@ const Home = () => {
   const hasMore = data?.pagination ? offset + LIMIT < data.pagination.total_count : false;
 
   return (
-    <div className="min-h-screen bg-light">
+    <div className="min-h-screen bg-light dark:bg-gray-900">
       <div className="container mx-auto px-4 py-6">
         <Header />
         <SearchBar onSearch={handleSearch} isLoading={isLoading} />

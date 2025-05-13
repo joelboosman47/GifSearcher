@@ -32,11 +32,11 @@ const GifCard = ({
 
   return (
     <div 
-      className="relative group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+      className="relative group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
       onClick={onClick}
     >
       {!isLoaded && (
-        <div className="w-full h-48 bg-gray-200 animate-pulse absolute inset-0"></div>
+        <div className="w-full h-48 bg-gray-200 dark:bg-gray-700 animate-pulse absolute inset-0"></div>
       )}
       <img 
         src={gif.images.fixed_height.url} 
@@ -48,10 +48,10 @@ const GifCard = ({
       {/* Favorite button that's always visible */}
       {onFavorite && (
         <button
-          className={`absolute top-2 right-2 rounded-full p-2 z-10 transition-colors ${
+          className={`absolute top-2 left-2 rounded-full p-2 z-10 transition-colors ${
             isFavorite 
               ? 'bg-primary text-white' 
-              : 'bg-white text-gray-500 opacity-70 hover:opacity-100'
+              : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 opacity-70 hover:opacity-100'
           }`}
           title={isFavorite ? "Remove from favorites" : "Add to favorites"}
           onClick={handleFavorite}
@@ -79,7 +79,7 @@ const GifCard = ({
         
         <div className="flex justify-end space-x-2">
           <button 
-            className="bg-white text-dark hover:bg-gray-100 transition-colors rounded-full p-2 flex items-center justify-center" 
+            className="bg-white dark:bg-gray-700 text-dark dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors rounded-full p-2 flex items-center justify-center" 
             title="Copy to clipboard"
             onClick={onCopy}
           >

@@ -44,12 +44,12 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
   return (
     <div className="relative mb-8">
-      <div className="flex items-center bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="flex items-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <Search className="text-gray-400 mx-3 h-5 w-5" />
         <Input
           ref={inputRef}
           type="text"
-          className="flex-1 py-3 px-2 text-gray-700 focus:outline-none border-0 shadow-none bg-white"
+          className="flex-1 py-3 px-2 text-gray-700 dark:text-gray-200 focus:outline-none border-0 outline-none focus:ring-0 ring-0 shadow-none bg-white dark:bg-gray-800"
           placeholder="Search for GIFs..."
           value={searchTerm}
           onChange={handleSearchInput}
@@ -72,7 +72,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
         {TRENDING_TAGS.map((tag) => (
           <button
             key={tag}
-            className="bg-white py-1 px-3 rounded-full text-xs shadow hover:shadow-md transition-shadow text-gray-700"
+            className="bg-white dark:bg-gray-800 py-1 px-3 rounded-full text-xs shadow hover:shadow-md transition-shadow text-gray-700 dark:text-gray-300"
             onClick={() => handleTagClick(tag)}
             disabled={isLoading}
           >

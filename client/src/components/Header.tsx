@@ -9,26 +9,24 @@ const Header = () => {
     <header className="mb-6">
       <div className="flex items-center justify-between">
         <Link href="/">
-          <a className="cursor-pointer">
-            <h1 className="text-2xl font-semibold text-dark flex items-center">
+            <h1 className="text-2xl font-semibold text-dark flex items-center cursor-pointer">
               <span className="text-primary">GIF</span>inder
               <ImagePlay className="ml-2 text-primary h-6 w-6" />
             </h1>
-          </a>
         </Link>
         <div className="flex items-center space-x-3">
           {isHomePage ? (
             <Link href="/favorites">
-              <a className="bg-white text-dark hover:bg-gray-50 transition-colors rounded-full py-1.5 px-3 shadow hover:shadow-md flex items-center">
+              <div className="bg-white dark:bg-gray-800 text-dark dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-full py-1.5 px-3 shadow hover:shadow-md flex items-center cursor-pointer">
                 <Heart className="h-4 w-4 text-primary mr-1.5" />
                 <span className="text-sm">Favorites</span>
-              </a>
+              </div>
             </Link>
           ) : (
             <Link href="/">
-              <a className="bg-white text-dark hover:bg-gray-50 transition-colors rounded-full py-1.5 px-3 shadow hover:shadow-md flex items-center">
+              <div className="bg-white dark:bg-gray-800 text-dark dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-full py-1.5 px-3 shadow hover:shadow-md flex items-center cursor-pointer">
                 <span className="text-sm">Search</span>
-              </a>
+              </div>
             </Link>
           )}
         </div>
