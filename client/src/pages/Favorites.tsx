@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import GifCard from "@/components/GifCard";
 import PreviewModal from "@/components/PreviewModal";
 import { useToast } from "@/hooks/use-toast";
@@ -115,93 +113,83 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-6">
-        <Header />
-        
-        <div className="flex items-center mb-6">
+    <div>
+      <div className="flex items-center mb-6">
+        <Link href="/">
+          <Button variant="outline" className="mr-3">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Search
+          </Button>
+        </Link>
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+          <Heart className="text-primary h-5 w-5 mr-2" />
+          My Favorite GIFs
+        </h2>
+      </div>
+      
+      {isLoading && (
+        <div className="text-center py-12">
+          <Loader2 className="mx-auto h-10 w-10 animate-spin text-primary" />
+          <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mt-4">Loading your favorites...</h2>
+        </div>
+      )}
+      
+      {isError && (
+        <div className="text-center py-12 bg-red-50 dark:bg-red-900/20 rounded-lg">
+          <AlertCircle className="text-destructive mx-auto h-14 w-14 mb-3" />
+          <h2 className="text-xl font-medium text-gray-800 dark:text-gray-200 mb-2">Oops! Something went wrong</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">We couldn't load your favorite GIFs. Please try again later.</p>
+        </div>
+      )}
+      
+      {!isLoading && !isError && favorites.length === 0 && (
+        <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+          <Heart className="mx-auto h-14 w-14 mb-3 text-gray-300 dark:text-gray-600" />
+          <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">No favorites yet</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">You haven't saved any GIFs to your favorites.</p>
           <Link href="/">
-            <Button variant="outline" className="mr-3">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Search
+            <Button className="bg-primary hover:bg-blue-600 text-white">
+              Search for GIFs
             </Button>
           </Link>
-          <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-            <Heart className="text-primary h-5 w-5 mr-2" />
-            My Favorite GIFs
-          </h2>
         </div>
-        
-        {/* Loading state */}
-        {isLoading && (
-          <div className="text-center py-12">
-            <Loader2 className="mx-auto h-10 w-10 animate-spin text-primary" />
-            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mt-4">Loading your favorites...</h2>
-          </div>
-        )}
-        
-        {/* Error state */}
-        {isError && (
-          <div className="text-center py-12 bg-red-50 dark:bg-red-900/20 rounded-lg">
-            <AlertCircle className="text-destructive mx-auto h-14 w-14 mb-3" />
-            <h2 className="text-xl font-medium text-gray-800 dark:text-gray-200 mb-2">Oops! Something went wrong</h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">We couldn't load your favorite GIFs. Please try again later.</p>
-          </div>
-        )}
-        
-        {/* Empty state */}
-        {!isLoading && !isError && favorites.length === 0 && (
-          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-            <Heart className="mx-auto h-14 w-14 mb-3 text-gray-300 dark:text-gray-600" />
-            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">No favorites yet</h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">You haven't saved any GIFs to your favorites.</p>
-            <Link href="/">
-              <Button className="bg-primary hover:bg-blue-600 text-white">
-                Search for GIFs
-              </Button>
-            </Link>
-          </div>
-        )}
-        
-        {/* Favorites grid */}
-        {!isLoading && !isError && favorites.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {favorites.map((favorite) => {
-              const gif = favoriteToGif(favorite);
-              return (
-                <GifCard
-                  key={favorite.id}
-                  gif={gif}
-                  onClick={() => handleGifSelect(gif)}
-                  onCopy={(e) => handleCopyGif(gif, e)}
-                  onDownload={(e) => handleDownloadGif(gif, e)}
-                  onPreview={(e) => {
-                    e.stopPropagation();
-                    handleGifSelect(gif);
-                  }}
-                  onFavorite={(e) => {
-                    e.stopPropagation();
-                    toggleFavorite(gif);
-                  }}
-                  isFavorite={true}
-                />
-              );
-            })}
-          </div>
-        )}
-        
-        {selectedGif && (
-          <PreviewModal
-            gif={selectedGif}
-            isOpen={isPreviewOpen}
-            onClose={handleClosePreview}
-            onCopy={() => handleCopyGif(selectedGif)}
-            onDownload={() => handleDownloadGif(selectedGif)}
-          />
-        )}
-        
-        <Footer />
-      </div>
+      )}
+      
+      {!isLoading && !isError && favorites.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {favorites.map((favorite) => {
+            const gif = favoriteToGif(favorite);
+            return (
+              <GifCard
+                key={favorite.id}
+                gif={gif}
+                onClick={() => handleGifSelect(gif)}
+                onCopy={(e) => handleCopyGif(gif, e)}
+                onDownload={(e) => handleDownloadGif(gif, e)}
+                onPreview={(e) => {
+                  e.stopPropagation();
+                  handleGifSelect(gif);
+                }}
+                onFavorite={(e) => {
+                  e.stopPropagation();
+                  toggleFavorite(gif);
+                }}
+                isFavorite={true}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {selectedGif && (
+        <PreviewModal
+          gif={selectedGif}
+          isOpen={isPreviewOpen}
+          onClose={handleClosePreview}
+          onCopy={() => handleCopyGif(selectedGif)}
+          onDownload={() => handleDownloadGif(selectedGif)}
+        />
+      )}
     </div>
   );
 };

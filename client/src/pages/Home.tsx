@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import GifGrid from "@/components/GifGrid";
-import Footer from "@/components/Footer";
 import { GiphyResponse } from "@/lib/types";
 
 const LIMIT = 9;
@@ -38,21 +36,17 @@ const Home = () => {
   const hasMore = data?.pagination ? offset + LIMIT < data.pagination.total_count : false;
 
   return (
-    <div className="min-h-screen bg-light dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-6">
-        <Header />
-        <SearchBar onSearch={handleSearch} isLoading={isLoading} />
-        <GifGrid 
-          gifs={gifs}
-          hasMore={hasMore}
-          isLoading={isLoading}
-          isError={isError}
-          searchTerm={searchTerm}
-          onLoadMore={handleLoadMore}
-          onRetry={handleRetry}
-        />
-        <Footer />
-      </div>
+    <div>
+      <SearchBar onSearch={handleSearch} isLoading={isLoading} />
+      <GifGrid 
+        gifs={gifs}
+        hasMore={hasMore}
+        isLoading={isLoading}
+        isError={isError}
+        searchTerm={searchTerm}
+        onLoadMore={handleLoadMore}
+        onRetry={handleRetry}
+      />
     </div>
   );
 };
