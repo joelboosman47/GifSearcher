@@ -49,12 +49,13 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
         <Input
           ref={inputRef}
           type="text"
-          className="flex-1 py-3 px-2 text-gray-700 focus:outline-none border-0 shadow-none"
+          className="flex-1 py-3 px-2 text-gray-700 focus:outline-none border-0 shadow-none bg-white"
           placeholder="Search for GIFs..."
           value={searchTerm}
           onChange={handleSearchInput}
           onKeyDown={handleKeyDown}
           disabled={isLoading}
+          style={{ color: "#333" }}
         />
         {searchTerm && (
           <button
