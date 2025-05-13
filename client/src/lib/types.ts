@@ -60,3 +60,18 @@ export interface TrendingGifsParams {
   offset?: number;
   limit?: number;
 }
+
+// Favorite types
+export interface Favorite {
+  id: number;
+  userId: number;
+  gifId: string;
+  gifUrl: string;
+  gifTitle: string | null;
+  thumbnailUrl: string;
+  createdAt: string;
+}
+
+export interface FavoriteResponse {
+  favorites: Favorite[];
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GiphyGif } from "@/lib/types";
-import { Copy, Download, ZoomIn } from "lucide-react";
+import { Copy, Download, Heart, ZoomIn } from "lucide-react";
 
 interface GifCardProps {
   gif: GiphyGif;
@@ -8,10 +8,27 @@ interface GifCardProps {
   onCopy: (e: React.MouseEvent) => void;
   onDownload: (e: React.MouseEvent) => void;
   onPreview: (e: React.MouseEvent) => void;
+  onFavorite?: (e: React.MouseEvent) => void;
+  isFavorite?: boolean;
 }
 
-const GifCard = ({ gif, onClick, onCopy, onDownload, onPreview }: GifCardProps) => {
+const GifCard = ({ 
+  gif, 
+  onClick, 
+  onCopy, 
+  onDownload, 
+  onPreview, 
+  onFavorite, 
+  isFavorite = false 
+}: GifCardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onFavorite) {
+      onFavorite(e);
+    }
+  };
 
   return (
     <div 
@@ -27,6 +44,23 @@ const GifCard = ({ gif, onClick, onCopy, onDownload, onPreview }: GifCardProps) 
         className={`w-full h-48 object-cover object-center ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         onLoad={() => setIsLoaded(true)}
       />
+      
+      {/* Favorite button that's always visible */}
+      {onFavorite && (
+        <button
+          className={`absolute top-2 right-2 rounded-full p-2 z-10 transition-colors ${
+            isFavorite 
+              ? 'bg-primary text-white' 
+              : 'bg-white text-gray-500 opacity-70 hover:opacity-100'
+          }`}
+          title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+          onClick={handleFavorite}
+        >
+          <Heart 
+            className={`h-4 w-4 ${isFavorite ? 'fill-white' : ''}`} 
+          />
+        </button>
+      )}
       
       {/* Hover actions overlay (desktop) */}
       <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-3">

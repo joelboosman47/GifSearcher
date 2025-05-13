@@ -4,6 +4,7 @@ import GifCard from "./GifCard";
 import PreviewModal from "./PreviewModal";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useFavorites } from "@/hooks/use-favorites";
 import { AlertCircle, Search, SearchX, Loader2 } from "lucide-react";
 
 interface GifGridProps {
@@ -28,6 +29,7 @@ const GifGrid = ({
   const [selectedGif, setSelectedGif] = useState<GiphyGif | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const { toast } = useToast();
+  const { isFavorite, toggleFavorite, isToggling } = useFavorites();
 
   const handleGifSelect = (gif: GiphyGif) => {
     setSelectedGif(gif);
@@ -163,6 +165,11 @@ const GifGrid = ({
               e.stopPropagation();
               handleGifSelect(gif);
             }}
+            onFavorite={(e) => {
+              e.stopPropagation();
+              toggleFavorite(gif);
+            }}
+            isFavorite={isFavorite(gif.id)}
           />
         ))}
       </div>
