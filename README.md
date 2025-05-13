@@ -1,7 +1,3 @@
-Here is an updated and comprehensive README file draft for your project, incorporating the new details:
-
----
-
 # GifSearcher
 
 GifSearcher is a powerful and user-friendly application designed to search and share GIF files using the GIPHY service. Whether you want to find the perfect GIF for a conversation, save your favorites, or switch between themes, GifSearcher makes it all effortless.
