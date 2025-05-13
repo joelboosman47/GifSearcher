@@ -142,10 +142,10 @@ const Favorites = () => {
         
         {/* Error state */}
         {isError && (
-          <div className="text-center py-12 bg-red-50 rounded-lg">
+          <div className="text-center py-12 bg-red-50 dark:bg-red-900/20 rounded-lg">
             <AlertCircle className="text-destructive mx-auto h-14 w-14 mb-3" />
-            <h2 className="text-xl font-medium text-gray-800 mb-2">Oops! Something went wrong</h2>
-            <p className="text-gray-600 mb-4">We couldn't load your favorite GIFs. Please try again later.</p>
+            <h2 className="text-xl font-medium text-gray-800 dark:text-gray-200 mb-2">Oops! Something went wrong</h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">We couldn't load your favorite GIFs. Please try again later.</p>
           </div>
         )}
         

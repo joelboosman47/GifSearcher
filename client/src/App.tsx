@@ -7,14 +7,17 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Favorites from "@/pages/Favorites";
 import { ThemeProvider } from "next-themes";
+import Layout from "@/components/Layout";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/favorites" component={Favorites} />
-      <Route component={NotFound} />
-    </Switch>
+    <Layout>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/favorites" component={Favorites} />
+        <Route component={NotFound} />
+      </Switch>
+    </Layout>
   );
 }
 
