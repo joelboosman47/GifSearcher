@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="mt-12 text-center text-gray-500 text-sm">
+    <footer className="mt-12 text-center text-gray-500 dark:text-gray-400 text-sm">
       <p className="mb-2">Built with ❤️ for GIF lovers</p>
       <p>
         Powered by GIPHY API

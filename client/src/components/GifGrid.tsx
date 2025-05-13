@@ -100,8 +100,8 @@ const GifGrid = ({
     return (
       <div className="text-center py-12">
         <Search className="text-primary mx-auto h-16 w-16 mb-4" />
-        <h2 className="text-xl font-medium text-gray-700 mb-2">Start searching for GIFs</h2>
-        <p className="text-gray-500 max-w-md mx-auto">
+        <h2 className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">Start searching for GIFs</h2>
+        <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
           Type a keyword above to find the perfect GIF for your conversations
         </p>
       </div>
